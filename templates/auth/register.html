@@ -1,0 +1,62 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/auth/style.css' %}" />
+{% endblock css %}
+{% load widget_tweaks %}
+<!-- content -->
+{% block content %}
+<div class="registerBox">
+  <img src="{% static 'media/loginBg.webp' %}" alt="bg" />
+  <h2>Welcome To DoctorHouse</h2>
+{% comment %} {{studentReg}} {% endcomment %}
+
+<div class="registerForm">
+    <div class="type">
+      <h3 id="student" class="activeTab">Student</h3>
+      <h3 id="doctor">Doctor</h3>
+    </div>
+    <h3 class="regTitle">Register</h3>
+    <div class="studentRegBox">
+      <form
+        class="studentform"
+        action="{% url 'student-register' %}"
+        method="post"
+      >
+        {% csrf_token %} 
+        {% for student in studentReg %} 
+        {% if student.label == "Gender" %} 
+        {% render_field student required="true" class="form-control fs-4 py-2 " %} 
+        {% elif student.label == "Department" %} 
+        {% render_field student required="true" class="form-control fs-4 py-2" %} 
+        {% else %} 
+        {%render_field student placeholder=student.label required="true" class="form-control p-2" %} 
+        {% endif %} 
+        {%endfor %}
+        <button type="submit" class="btn my-4 fs-3">Sign Up</button>
+      </form>
+    </div>
+
+    <div class="doctorRegBox">
+      <form 
+      action="{% url 'doctor-register' %}"
+      class="doctorform"
+      method="post"
+      >
+        {% csrf_token %}
+         {% for doctor in doctorReg %} 
+         {% if doctor.label == "Gender" %} 
+         {% render_field doctor required="true" class="form-control fs-4 p-2" %} 
+         {% else %} 
+         {% render_field doctor placeholder=doctor.label required="true" class="form-control p-2" %} {% endif %} {%endfor %}
+        <button type="submit" class="btn my-2 fs-3">Sign Up</button>
+      </form>
+    </div>
+  </div>
+  <p class="alreadyUser">
+    Already an User ? <a href="{% url 'login' %}">Login</a>
+  </p>
+</div> 
+{% endblock content %} {% block script %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock script %}

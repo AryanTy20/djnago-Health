@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/auth/style.css' %}" />
+{% endblock css %}
+<!-- content -->
+{% block content %}
+
+<h1>doctor Home</h1>
+
+
+<div class="mx-auto" style="width: 200px;">
+  <a href="{% url 'doctor-logout' %}" class="btn btn-danger fs-2 ">Logout</a>
+</div>
+  
+
+{% endblock content %}

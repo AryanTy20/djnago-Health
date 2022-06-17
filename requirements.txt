@@ -1,0 +1,8 @@
+# To install cmd run =>  pip install -r requirements.txt
+
+# bootstrap by cdn
+
+django-widget-tweaks
+uuid
+django-livereload-server
+django-jazzmin

@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/auth/style.css' %}" />
+{% endblock css %}
+<!-- content -->
+{% block content %}
+<div class="loginBox ">
+  <img src="{% static 'media/loginBg.webp' %}" alt="bg" />
+  <h2>Welcome To DoctorHouse</h2>
+  <form 
+  method="POST"
+  action="{% url 'login' %}"
+  >
+  {% csrf_token %}
+    <h1 class="login text-center my-2 mb-4">Login</h1>
+    <input type="text" name="name" required class="form-control mt-5 my-3 fs-3 p-2 rounded" placeholder="Email" />
+    <input type="password" name="password" required class="form-control mb-5 fs-3 p-2 rounded" placeholder="**********" />
+    <button class="w-100 btn fs-2 rounded">Login</button>
+
+    <p class="my-5 text-center">Not a member ? <a href="{% url 'register' %}">SignUp</a></p>
+  </form>
+</div>
+{% endblock content %}
