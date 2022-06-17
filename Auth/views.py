@@ -15,8 +15,10 @@ def Login(request):
             login(request, user)
             if user.type == "student":
                 return redirect("student-home")
-            else:
+            elif user.type == "doctor":
                 return redirect("doctor-home")
+            else:
+                return redirect("admin/")
         else:
             return HttpResponse("<h1>Wrong credential</h1>")
 

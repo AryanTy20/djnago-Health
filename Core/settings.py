@@ -90,6 +90,7 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = "Auth.User"
+LOGOUT_REDIRECT_URL = 'login'
 
 
 # Password validation
